@@ -21,13 +21,17 @@ LONG_BREAK_MIN = 20
 window = Tk()
 window.title("Girlo")
 # window.minsize(width=600, height=600)
-window.configure(bg="#020617", padx=200, pady=200)
+window.configure(bg="#020617", padx=200, pady=100)
+
+# Main label
+main_label = Label(text="BootyTimer", fg="yellow", bg="black", font=("Arial", 40, 'bold'))
+main_label.pack()
 
 # -- Canvas ---
-canvas = Canvas(width=400, height=400)
+canvas = Canvas(width=400, height=400, bg="#020617", highlightthickness=0)
 girl_img = PhotoImage(file="w.png")
 canvas.create_image(200,200, image=girl_img)
-canvas.create_text(200,170, text="00:00", font=("Arial", 50, "bold"), fill="yellow")
+canvas.create_text(200,175, text="00:00", font=(FONT_NAME, 50, "bold"), fill="yellow")
 canvas.pack()
 
 
