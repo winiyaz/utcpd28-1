@@ -19,13 +19,13 @@ LONG_BREAK_MIN = 20
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
-window.title("Girlo")
+window.title("AssSuckingTimer")
 # window.minsize(width=600, height=600)
 window.configure(bg="#020617", padx=200, pady=100)
 check_mark = "✅"
 
 # Main label
-main_label = Label(text="BootyTimer", fg="yellow", bg="black", font=("Arial", 40, 'bold'))
+main_label = Label(text="BootyTimer", fg="yellow", bg="black", font=("Arial", 50, 'bold'))
 main_label.grid(column=1, row=0)
 
 # -- Canvas ---
@@ -40,6 +40,10 @@ start_button = Button(text="Start", bg="#005B41", fg="white", font=("Arial", 20)
 start_button.grid(column=0, row=3, pady=20)
 reset_button = Button(text="Reset", bg="#35155D", fg="white", font=("Arial", 20))
 reset_button.grid(column=2, row=3, pady=20)
+
+# Check marks
+check_marks = Label(text="✔", background="green", font=("Arial", 30))
+check_marks.grid(column=1, row=4)
 
 # -- Window setup ---
 window.mainloop()
