@@ -24,9 +24,10 @@ window.title("Girlo")
 window.configure(bg="#020617", padx=200, pady=200)
 
 # -- Canvas ---
-canvas = Canvas(width=200, height=200)
+canvas = Canvas(width=400, height=400)
 girl_img = PhotoImage(file="w.png")
-canvas.create_image(100,100, image=girl_img)
+canvas.create_image(200,200, image=girl_img)
+canvas.create_text(200,170, text="00:00", font=("Arial", 50, "bold"), fill="yellow")
 canvas.pack()
 
 
