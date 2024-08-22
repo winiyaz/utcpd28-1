@@ -1,3 +1,4 @@
+import math
 from tkinter import *
 
 # ---------------------------- CONSTANTS ------------------------------- #
@@ -16,13 +17,15 @@ LONG_BREAK_MIN = 20
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 
 def start_timer():
-	count_down(5)
+	count_down(5 * 60)
 
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
 
 def count_down(count):
-	canvas.itemconfig(timer_text, text=count)
+	count_min = math.floor(count / 60)
+	cont_sec = count % 60
+	canvas.itemconfig(timer_text, text=f'{count_min}:{cont_sec}')
 	if count > 0:
 		window.after(1000, count_down, count - 1)
 
@@ -41,7 +44,7 @@ main_label.grid(column=1, row=0)
 canvas = Canvas(width=400, height=400, bg="#020617", highlightthickness=0)
 girl_img = PhotoImage(file="w.png")
 canvas.create_image(200, 200, image=girl_img)
-timer_text = canvas.create_text(200, 175, text="00:00", font=(FONT_NAME, 50, "bold"), fill="#DA0C81")
+timer_text = canvas.create_text(200, 175, text="00:00", font=(FONT_NAME, 40, "bold"), fill="#DA0C81")
 canvas.grid(column=1, row=1)
 
 # Adding Buttons
