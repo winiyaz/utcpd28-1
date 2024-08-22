@@ -32,7 +32,7 @@ main_label.grid(column=1, row=0)
 canvas = Canvas(width=400, height=400, bg="#020617", highlightthickness=0)
 girl_img = PhotoImage(file="w.png")
 canvas.create_image(200,200, image=girl_img)
-canvas.create_text(200,175, text="00:00", font=(FONT_NAME, 50, "bold"), fill="yellow")
+canvas.create_text(200,175, text="00:00", font=(FONT_NAME, 50, "bold"), fill="#DA0C81")
 canvas.grid(column=1, row=1)
 
 # Adding Buttons
