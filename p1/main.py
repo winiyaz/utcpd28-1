@@ -11,9 +11,19 @@ WORK_MIN = 1
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 reps = 0
+timer = ""
 
 
 # ---------------------------- TIMER RESET ------------------------------- #
+
+def reset_time():
+	window.after_cancel(timer)
+	canvas.itemconfig(timer_text, text="00:00")
+	main_label.config(text="BootyTimer")
+	check_marks.config(text="")
+	global reps
+	reps = 0
+
 
 # ---------------------------- TIMER MECHANISM ------------------------------- #
 
@@ -43,11 +53,18 @@ def count_down(count):
 	count_sec = count % 60
 	if count_sec < 10:
 		count_sec = f"0{count_sec}"  # Dynamic typing here
+
 	canvas.itemconfig(timer_text, text=f'{count_min}:{count_sec}')
 	if count > 0:
-		window.after(1000, count_down, count - 1)
+		global timer
+		timer = window.after(1000, count_down, count - 1)
 	else:
 		start_timer()
+		marks = ""
+		work_sessions = math.floor(reps / 2)
+		for _ in range(work_sessions):
+			marks += "✔"
+		check_marks.config(text=marks)
 
 
 # ---------------------------- UI SETUP ------------------------------- #
@@ -70,11 +87,11 @@ canvas.grid(column=1, row=1)
 # Adding Buttons
 start_button = Button(text="Start", bg="#005B41", fg="white", font=("Arial", 20), command=start_timer)
 start_button.grid(column=0, row=3, pady=20)
-reset_button = Button(text="Reset", bg="#35155D", fg="white", font=("Arial", 20))
+reset_button = Button(text="Reset", bg="#35155D", fg="white", font=("Arial", 20), command=reset_time)
 reset_button.grid(column=2, row=3, pady=20)
 
 # Check marks
-check_marks = Label(text="✔", background="green", font=("Arial", 30))
+check_marks = Label(background="green", font=("Arial", 30))
 check_marks.grid(column=1, row=4)
 
 # -- Window setup ---
